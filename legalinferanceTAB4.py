@@ -130,4 +130,5 @@ def main():
                             if key != 'Case Name':
                                 st.markdown(f"**{key}:** {value}")
 
-
+if __name__ == "__main__":
+    main()
