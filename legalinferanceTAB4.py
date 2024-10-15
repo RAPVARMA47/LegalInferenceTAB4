@@ -109,4 +109,25 @@ def query_index(user_query):
             case['Source PDF'] = f"[{case_name}]({source_pdf_path})"  # Convert to a clickable link with case name
     return parsed_cases
 
+def main():
+        st.markdown("""
+        <div style='text-align: justify; font-size: 16px; color: #34495e;'>
+            <strong>Database Source:</strong>
+                <li><strong>Local Case's File</strong></li>
+                
+        </div>
+        """,unsafe_allow_html=True)        # user_query = st.text_input("Ask a question about your legal cases:")
+        user_query = st.text_input("Ask a question about your legal cases:")
+        if user_query:
+            
+            with st.spinner("Analyzing your query..."):
+                cases = query_index(user_query)
+                
+                for i, case in enumerate(cases, 1):
+                    case_title = f"Case {i}: {case.get('Case Name', 'Unnamed Case')}"
+                    with st.expander(case_title):
+                        for key, value in case.items():
+                            if key != 'Case Name':
+                                st.markdown(f"**{key}:** {value}")
+
 
