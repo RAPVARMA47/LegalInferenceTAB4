@@ -13,6 +13,16 @@ from langchain.chains import LLMChain
 Gemini = st.secrets["GOOGLE_API_KEY"]
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest", google_api_key=Gemini)
 
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+ 
+
 # Set the FAISS index path
 EMBEDDING_PATH = "INDEX_3"
 
